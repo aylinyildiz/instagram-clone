@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPhoto, getComments, addComment } from "../../store/actions/actions";
 import Navbar from "../Navbar";
-import {BrowserRouter as Router, Link, withRouter} from "react-router-dom";
-// import Image from "../Image/Image"
+import { Link, withRouter } from "react-router-dom";
+import like from "../../assets/like.png";
+import sendd from "../../assets/send (1).png"
+import comment from "../../assets/comment.png"
+import save from "../../assets/save.png"
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,21 +25,28 @@ const Dashboard = () => {
     dispatch(addComment(newComment));
   };
 
-  // const getImage =(image) =>{
-  //   dispatch(getImage(image));
-  // }
-
   return (
     <div className="center">
-      <Navbar/>
-
+      <Navbar />
       <div className="profile">
         {photoDetails.length > 0 &&
           photoDetails.map((photo) => (
             <>
               <p className="photo-info">{photo.author}</p>
-              <Link to="/ImageDetail">
-              <img src={photo.download_url} alt="images" width="100%" /></Link>
+              <Link
+                to={{ pathname: "/ImageDetail", state: photo.download_url}}
+              >
+                <img className="post" src={photo.download_url} alt="images"/>
+              </Link>
+              <div className="icon-menu">
+              <div className="interactions">
+              <img src={like} className="icon"/>
+              <img src={comment} className="icon"/>
+              <img src={sendd} className="icon"/>
+            </div>
+            <img src={save} className="icon"/>
+              </div>
+             
               {comments.length > 0 &&
                 comments.map((comment) => (
                   <>
@@ -54,7 +64,7 @@ const Dashboard = () => {
                 />
                 <button type="submit">Add new comment</button>
               </form>
-              {/* <Link to="/Image" onClick={()=>getImage(photoDetails.download_url)}><img src={photoDetails.download_url} width="100%"/></Link> */}
+        
             </>
           ))}
       </div>

@@ -3,6 +3,7 @@ import camera from "../assets/camera.png";
 import instagram from "../assets/instagram.png";
 import send from "../assets/send.png";
 
+
 const Navbar = () => {
   return (
     <div className="navbar">
