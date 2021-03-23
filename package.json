@@ -1,6 +1,6 @@
 {
+  "homepage": "http://aylinyildiz.github.io/instagram-clone",
   "name": "instagram-app",
-  "homepage": "https://aylinyildiz.github.io/instagram-clone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
